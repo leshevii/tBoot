@@ -32,7 +32,7 @@ namespace lesson9_telegram_bot
 
         public static void Main(string[] args)
         {
-            token = System.IO.File.ReadAllText("/Users/ivanlesev/token.txt");
+            token = System.IO.File.ReadAllText(Directory.GetCurrentDirectory()+ "/token.txt");
             bot = new TelegramBotClient(token);
 
             MyBoot myBoot = new MyBoot(bot,Directory.GetCurrentDirectory()+"/res.txt");

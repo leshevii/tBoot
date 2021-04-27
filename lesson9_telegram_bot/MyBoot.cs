@@ -80,7 +80,7 @@ namespace lesson9_telegram_bot
                     status = saveFile(arg.Message.Animation.FileId, Telegram.Bot.Types.Enums.MessageType.Animation.ToString());
                     break;
                 case Telegram.Bot.Types.Enums.MessageType.Location:                    
-                    PrintInfoWeather(arg.Message.Chat, "/Users/ivanlesev/wToken.txt", arg.Message.Location.Longitude, arg.Message.Location.Latitude);
+                    PrintInfoWeather(arg.Message.Chat, Directory.GetCurrentDirectory()+"/wToken.txt", arg.Message.Location.Longitude, arg.Message.Location.Latitude);
                     break;
                 default:
                         SendText(arg.Message.Chat, "Not save");
