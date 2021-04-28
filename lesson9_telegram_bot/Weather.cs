@@ -23,7 +23,13 @@ namespace lesson9_telegram_bot
             this.longitude = longitude;
             this.latitude  = latitude;
 
-            token = File.ReadAllText(path);
+            try
+            {
+                token = File.ReadAllText(path);
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>

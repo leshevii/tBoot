@@ -26,7 +26,8 @@ namespace lesson9_telegram_bot
         public MyBoot(ITelegramBotClient tBootClient,string path)
         {
             this.tBootClient = tBootClient;
-            this.path        = path;            
+            this.path        = path;
+            
         }
         /// <summary>
         /// Позволяет добавить команды к боту
@@ -42,8 +43,7 @@ namespace lesson9_telegram_bot
         /// <param name="sender"></param>
         /// <param name="arg"></param>
         public async void OnMessage(object sender, MessageEventArgs arg)
-        {
-            Console.WriteLine(arg.Message.Location);
+        {            
             bool status;
             switch (arg.Message.Type)
             {
@@ -80,7 +80,7 @@ namespace lesson9_telegram_bot
                     status = saveFile(arg.Message.Animation.FileId, Telegram.Bot.Types.Enums.MessageType.Animation.ToString());
                     break;
                 case Telegram.Bot.Types.Enums.MessageType.Location:                    
-                    PrintInfoWeather(arg.Message.Chat, Directory.GetCurrentDirectory()+"/wToken.txt", arg.Message.Location.Longitude, arg.Message.Location.Latitude);
+                    PrintInfoWeather(arg.Message.Chat, MainClass.weatherToken, arg.Message.Location.Longitude, arg.Message.Location.Latitude);
                     break;
                 default:
                         SendText(arg.Message.Chat, "Not save");
@@ -201,7 +201,7 @@ namespace lesson9_telegram_bot
         /// Выводит информацию о погоде для переданной геопозиции
         /// </summary>
         /// <param name="chat"></param>
-        /// <param name="path"></param>
+        /// <param name="path">путь к токену для сайта weather</param>
         /// <param name="lon">долгота</param>
         /// <param name="lat">широта</param>
         public async void PrintInfoWeather(Chat chat,string path,float lon,float lat)
